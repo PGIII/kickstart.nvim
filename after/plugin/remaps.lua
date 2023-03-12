@@ -12,3 +12,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Format files
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- buffers
+vim.keymap.set("n", "<leader>bs", "<C-w>w")
+vim.keymap.set("n", "<leader>bn", ":vs<CR>")
+vim.keymap.set("n", "<leader>bd", "<C-w>q")
