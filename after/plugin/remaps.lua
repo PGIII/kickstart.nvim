@@ -14,7 +14,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 -- buffers
 vim.keymap.set("n", "<leader>bs", "<C-w>w")
-vim.keymap.set("n", "<leader>bn", ":vs<CR>")
+vim.keymap.set("n", "<leader>bn", ":vs<CR><C-w>w")
 vim.keymap.set("n", "<leader>bd", "<C-w>q")
 -- swap header sources
 vim.keymap.set("n", "<leader>o", ":ClangdSwitchSourceHeader<CR>")
