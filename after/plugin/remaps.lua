@@ -19,3 +19,9 @@ vim.keymap.set("n", "<leader>bd", "<C-w>q")
 -- swap header sources
 vim.keymap.set("n", "<leader>o", ":ClangdSwitchSourceHeader<CR>")
 
+--keeping cursor centered 
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
