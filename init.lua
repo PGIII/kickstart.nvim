@@ -143,10 +143,8 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = "ibl",
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
@@ -366,9 +364,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagn
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(client, bufnr)
-  -- if client.server_capabilities.inlayHintProvider then
-  --  vim.lsp.buf.inlay_hint(bufnr, true)
-  -- end
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -382,7 +377,7 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
-  
+
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -409,6 +404,10 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint(bufnr, true)
+  end
 end
 
 -- Enable the following language servers
