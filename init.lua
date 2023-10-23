@@ -406,7 +406,8 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 
   if client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint(bufnr, true)
+    --toggle inlay hints
+    nmap('<leader>ih', function() vim.lsp.inlay_hint(bufnr, nil) end, 'Toggle [I]nlay [H]ints')
   end
 end
 
